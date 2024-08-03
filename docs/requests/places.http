@@ -1,0 +1,33 @@
+@baseURL = http://localhost:3003
+
+### Find Place - Places API
+GET {{baseURL}}/current/textsearch/json
+  ?query=restaurantes em Lisboa
+  &type=restaurant
+  &language=pt-BR
+
+### Text Search - Places API (New)
+POST {{baseURL}}/new/places:searchText
+Content-Type: application/json
+X-Goog-FieldMask: places.displayName,places.formattedAddress,places.location,places.rating
+
+{
+  "textQuery" : "restaurantes em Lisboa",
+  "includedType": "restaurant",
+  "languageCode": "pt-BR"
+}
+
+### Query Autocomplete - Places API
+GET {{baseURL}}/current/queryautocomplete/json
+  ?input=pizza em lis
+  &language=pt-BR
+
+### Autocomplete - Places API (New)
+POST {{baseURL}}/new/places:autocomplete
+Content-Type: application/json
+
+{
+  "input" : "pizza em lis",
+  "includeQueryPredictions": true,
+  "languageCode": "pt-BR"
+}
