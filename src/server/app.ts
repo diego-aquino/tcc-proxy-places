@@ -6,7 +6,7 @@ import { environment } from '../config/environment';
 import { handleServerError } from './errors';
 
 const app = fastify({
-  logger: true,
+  logger: process.env.NODE_ENV !== 'test',
   disableRequestLogging: environment.NODE_ENV !== 'development',
 });
 
